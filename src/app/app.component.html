@@ -1,0 +1,34 @@
+<header class="p-3">
+    <div class="container">
+      <div class="d-flex justify-content-end">
+        <div class="dropdown">
+          <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-bs-toggle="dropdown"
+            aria-haspopup="true" aria-expanded="false">
+            Sample Links
+          </button>
+          <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+            <li><a class="dropdown-item" href="#">Link 1</a></li>
+            <li><a class="dropdown-item" href="#">Link 2</a></li>
+            <li><a class="dropdown-item" href="#">Link 3</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </header>
+  
+  <main class="p-3">
+    <div class="container">
+        <h2>Showing {{ (persons$ | async)?.length }} Records</h2>
+      <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4">
+        <div class="col" *ngFor="let person of persons$ | async">
+          <div class="card">
+            <div class="card-body">
+              <h5 class="card-title">{{ person.name }}</h5>
+              <p class="card-text">{{ person.address.street }}, {{ person.address.city }}, {{ person.address.zipcode }}</p>
+              <button class="btn btn-danger" (click)="deletePerson(person)">Delete</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </main>
